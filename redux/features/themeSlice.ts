@@ -10,9 +10,13 @@ interface themeType {
   background3: string;
   btns: string;
   btnsHover: string;
+  btnsBorder: string;
   btnsClear: string;
+  btnsClearBorder: string;
   btnsClearHover: string;
   btnEqual: string;
+  btnEqualBorder: string;
+  btnEqualHover: string;
 }
 
 interface initialStateType {
