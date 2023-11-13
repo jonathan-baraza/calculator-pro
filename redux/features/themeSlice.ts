@@ -8,42 +8,45 @@ interface themeType {
   background: string;
   background2: string;
   background3: string;
-  btnClear: string;
+  btns: string;
+  btnsHover: string;
+  btnsClear: string;
+  btnsClearHover: string;
   btnEqual: string;
 }
 
-interface initialStateType{
-  name:string;
-  theme:themeType;
+interface initialStateType {
+  name: string;
+  theme: themeType;
 }
 
-const initialState: initialStateType ={
-  name:"one",
-  theme:allThemes.one
-}
+const initialState: initialStateType = {
+  name: "one",
+  theme: allThemes.one,
+};
 
 const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
     setTheme: (state, action: PayloadAction<string>) => {
-     switch(action.payload){
-      case "one":
-        state.name="one"
-        state.theme=allThemes.one;
-        break;
-      case "two":
-        state.name = "two";
-        state.theme = allThemes.two;
-        break;
-      case "three":
-        state.name = "three";
-        state.theme = allThemes.three;
-        break;
-      default:
-        state.name="one"
-        state.theme=allThemes.one;
-     }
+      switch (action.payload) {
+        case "one":
+          state.name = "one";
+          state.theme = allThemes.one;
+          break;
+        case "two":
+          state.name = "two";
+          state.theme = allThemes.two;
+          break;
+        case "three":
+          state.name = "three";
+          state.theme = allThemes.three;
+          break;
+        default:
+          state.name = "one";
+          state.theme = allThemes.one;
+      }
     },
   },
 });
