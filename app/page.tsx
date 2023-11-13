@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <main
-      style={{ backgroundColor: currentTheme.background }}
+      style={{ backgroundColor: currentTheme.theme.background }}
       className={`w-full h-screen`}
     >
       <div className="w-1/3 mx-auto flex items-center py-16 flex-col">

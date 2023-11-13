@@ -17,7 +17,7 @@ const ThemeToggle = () => {
           </div>
           <div
             className="w-full rounded-xl h-[20px] px-1 flex items-center justify-between"
-            style={{ backgroundColor: currentTheme.background2 }}
+            style={{ backgroundColor: currentTheme.theme.background2 }}
           >
             <div
               className={`h-[13px]  ${
