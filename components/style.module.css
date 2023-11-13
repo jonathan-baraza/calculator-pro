@@ -1,0 +1,14 @@
+@keyframes blinkanimation {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+.blinker {
+  animation-name: blinkanimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
