@@ -1,6 +1,12 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setExpression, del, reset } from "@/redux/features/computeSlice";
-import { MouseEvent } from "react";
+import {
+  setExpression,
+  del,
+  reset,
+  setOperator,
+  compute,
+} from "@/redux/features/computeSlice";
+import { MouseEvent, useState } from "react";
 
 const DialPad = () => {
   const {
@@ -16,7 +22,11 @@ const DialPad = () => {
     btnEqualHover,
     btnEqualBorder,
   } = useAppSelector((state) => state.theme.theme);
+  const { currentTerm, expression } = useAppSelector((state) => state.compute);
   const dispatch = useAppDispatch();
+
+  const [operators, setOperators] = useState<string[]>([""]);
+  const [operands, setOperands] = useState<string[]>([""]);
 
   const handleCompute = (e: any) => {
     const term = e.target?.id || e.target?.innerHTML;
@@ -53,19 +63,29 @@ const DialPad = () => {
         dispatch(setExpression("9"));
         break;
       case ".":
+        if (
+          currentTerm === "." ||
+          !currentTerm ||
+          currentTerm === "+" ||
+          currentTerm === "-" ||
+          currentTerm === "/" ||
+          currentTerm === "x"
+        ) {
+          return;
+        }
         dispatch(setExpression("."));
         break;
       case "+":
-        dispatch(setExpression("+"));
+        dispatch(setOperator("+"));
         break;
       case "-":
-        dispatch(setExpression("-"));
+        dispatch(setOperator("-"));
         break;
       case "/":
-        dispatch(setExpression("/"));
+        dispatch(setOperator("/"));
         break;
       case "x":
-        dispatch(setExpression("x"));
+        dispatch(setOperator("x"));
         break;
       case "del":
         dispatch(del());
@@ -74,7 +94,7 @@ const DialPad = () => {
         dispatch(reset());
         break;
       case "=":
-        dispatch(setExpression("="));
+        dispatch(compute("="));
         break;
       default:
         break;

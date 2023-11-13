@@ -6,7 +6,7 @@ import Providers from "@/redux/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Calculator App",
+  title: "🖩 Calculator App ",
   description: "This is the calculator app.",
 };
 
