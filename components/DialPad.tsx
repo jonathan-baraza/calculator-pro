@@ -1,4 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setExpression, del, reset } from "@/redux/features/computeSlice";
+import { MouseEvent } from "react";
 
 const DialPad = () => {
   const {
@@ -14,6 +16,71 @@ const DialPad = () => {
     btnEqualHover,
     btnEqualBorder,
   } = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
+
+  const handleCompute = (e: any) => {
+    const term = e.target?.id || e.target?.innerHTML;
+
+    switch (term) {
+      case "0":
+        dispatch(setExpression("0"));
+        break;
+      case "1":
+        dispatch(setExpression("1"));
+        break;
+      case "2":
+        dispatch(setExpression("2"));
+        break;
+      case "3":
+        dispatch(setExpression("3"));
+        break;
+      case "4":
+        dispatch(setExpression("4"));
+        break;
+      case "5":
+        dispatch(setExpression("5"));
+        break;
+      case "6":
+        dispatch(setExpression("6"));
+        break;
+      case "7":
+        dispatch(setExpression("7"));
+        break;
+      case "8":
+        dispatch(setExpression("8"));
+        break;
+      case "9":
+        dispatch(setExpression("9"));
+        break;
+      case ".":
+        dispatch(setExpression("."));
+        break;
+      case "+":
+        dispatch(setExpression("+"));
+        break;
+      case "-":
+        dispatch(setExpression("-"));
+        break;
+      case "/":
+        dispatch(setExpression("/"));
+        break;
+      case "x":
+        dispatch(setExpression("x"));
+        break;
+      case "del":
+        dispatch(del());
+        break;
+      case "reset":
+        dispatch(reset());
+        break;
+      case "=":
+        dispatch(setExpression("="));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div
       style={{ backgroundColor: background3, color: textColor2 }}
@@ -35,6 +102,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="7"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           7
         </div>
@@ -51,6 +122,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="8"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           8
@@ -69,6 +144,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="9"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           9
         </div>
@@ -85,6 +164,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btnsClear;
+          }}
+          id="del"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           DEL
@@ -106,6 +189,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="4"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           4
         </div>
@@ -122,6 +209,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="5"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           5
@@ -140,6 +231,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="6"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           6
         </div>
@@ -156,6 +251,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="+"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           +
@@ -177,6 +276,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="1"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           1
         </div>
@@ -193,6 +296,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="2"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           2
@@ -211,6 +318,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="3"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           3
         </div>
@@ -227,6 +338,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="-"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           -
@@ -248,6 +363,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="."
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           .
         </div>
@@ -264,6 +383,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="0"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           0
@@ -282,6 +405,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
           }}
+          id="/"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           /
         </div>
@@ -298,6 +425,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btns;
+          }}
+          id="x"
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           X
@@ -319,6 +450,10 @@ const DialPad = () => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btnsClear;
           }}
+          id="reset"
+          onClick={(e) => {
+            handleCompute(e);
+          }}
         >
           RESET
         </div>
@@ -335,6 +470,10 @@ const DialPad = () => {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = btnEqual;
+          }}
+          id="="
+          onClick={(e) => {
+            handleCompute(e);
           }}
         >
           =
